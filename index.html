@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <title>Ruby on Rails完全チュートリアル</title>
+</head>
+<body>
+<!-- @see https://guides.rubyonrails.org/ -->
+<h1>Ruby on Rails完全チュートリアル</h1>
+<pre>
+1. RailsとHerokuでWebアプリを作ろう
+[本文]
+    1.1. Railsとは
+    [本文]
+        Railsは、Webアプリケーションを作るためのフレームワークです。
+        このチュートリアルでは、Railsを使って、Webアプリケーションを作ります。
+    [詳細]
+        Railsは、Rubyで書かれたWebアプリケーションフレームワークです。
+        Railsは、Webアプリケーションを作るためのツールキットとして、
+        データベースの操作、Webサーバーとの接続、
+        テンプレートエンジン、テスト、デプロイなどの機能を提供します。
+        Railsは、Rubyの標準添付ライブラリであるActiveSupport、
+        ActiveRecord、ActionPack、ActionMailer、ActionViewなどのライブラリを使っています。
+        これらのライブラリは、Ruby on Railsのコアとなっています。
+        Railsは、MVC（Model-View-Controller）というアーキテクチャパターンを採用しています。
+        MVCは、アプリケーションを、モデル、ビュー、コントローラーの3つの部分に分けています。
+        モデルは、データベースの操作を行う部分です。
+        ビューは、ユーザーに見せる画面を作る部分です。
+        コントローラーは、モデルとビューをつなぐ部分です。
+        Railsは、このMVCのパターンを使って、Webアプリケーションを作ります。
+        Railsは、Rubyの標準添付ライブラリであるActiveSupport、
+        ActiveRecord、ActionPack、ActionMailer、ActionViewなどのライブラリを使っています。
+        これらのライブラリは、Ruby on Railsのコアとなっています。
+        Railsは、MVC（Model-View-Controller）というアーキテクチャパターンを採用しています。
+        MVCは、アプリケーションを、モデル、ビュー、コントローラーの3つの部分に分けています。
+        モデルは、データベースの操作を行う部分です。
+        ビューは、ユーザーに見せる画面を作る部分です。
+        コントローラーは、モデルとビューをつなぐ部分です。
+        Railsは、このMVCのパターンを使って、Webアプリケーションを作ります。
+    1.2. Herokuとは
+    [本文]
+        Herokuは、Webアプリケーションを公開するためのサービスです。
+        このチュートリアルでは、Herokuを使って、Webアプリケーションを公開します。
+    [詳細]
+    参照： https://devcenter.heroku.com/articles/getting-started-with-rails7
+
+    1.3. まとめ
+    [本文]
+        このチュートリアルでは、RailsとHerokuを使って、Webアプリケーションを作ります。
+        このチュートリアルを終えると、RailsとHerokuの基本的な使い方がわかります。
+
+
+2. RailsのGem「devise」でログイン機能を作ろう
+[本文]
+    2.1. deviseとは
+    [本文]
+        deviseは、ログイン機能を作るためのGemです。
+        このチュートリアルでは、deviseを使って、ログイン機能を作ります。
+
+    2.2. deviseのインストール
+    [本文]
+        deviseを使うために、まずはdeviseをインストールします。
+    [詳細]
+        Gemfileに、deviseを追加します。
+        $ bundle install
+        $ rails generate devise:install
+        $ rails generate devise User
+        $ rails db:migrate
+
+    2.3. deviseの設定
+    [本文]
+        deviseを使うために、設定を行います。
+    [詳細]
+        config/initializers/devise.rb
+        config/locales/devise.ja.yml
+
+    2.4. deviseのルーティング
+    [本文]
+        deviseのルーティングを設定します。
+    [詳細]
+        config/routes.rb
+
+    2.5. deviseのビュー
+    [本文]
+        deviseのビューを作成します。
+    [詳細]
+        $ rails generate devise:views
+
+    2.6. deviseのコントローラー
+    [本文]
+        deviseのコントローラーを作成します。
+    [詳細]
+        $ rails generate devise:controllers users
+    
+    2.7. deviseのモデル
+    [本文]
+        deviseのモデルを作成します。
+    [詳細]
+        app/models/user.rb
+
+    2.8. deviseのヘルパー
+    [本文]
+        deviseのヘルパーを作成します。
+    [詳細]
+        app/helpers/application_helper.rb
+    
+    2.9. deviseのテスト
+    [本文]
+        deviseのテストを作成します。
+    [詳細]
+        spec/factories/users.rb
+        spec/models/user_spec.rb
+        spec/requests/users_spec.rb
+    
+    2.10. まとめ
+    [本文]
+        このチュートリアルでは、deviseを使って、ログイン機能を作りました。
+        このチュートリアルを終えると、deviseを使って、ログイン機能を作るための基本的な知識が身につきます。
+        
+3. RailsのGem「carrierwave」で画像アップロード機能を作ろう
+[本文]
+    3.1. carrierwaveとは
+    [本文]
+        carrierwaveは、画像アップロード機能を作るためのGemです。
+        このチュートリアルでは、carrierwaveを使って、画像アップロード機能を作ります。
+
+    3.2. carrierwaveのインストール
+    [本文]
+        carrierwaveを使うために、まずはcarrierwaveをインストールします。
+    [詳細]
+        Gemfileに、carrierwaveを追加します。
+        $ bundle install
+        $ rails generate uploader Image
+
+    3.3. carrierwaveの設定
+    [本文]
+        carrierwaveを使うために、設定を行います。
+
+    3.4. carrierwaveのモデル
+    [本文]
+        carrierwaveのモデルを作成します。
+    [詳細]
+        app/models/user.rb
+    
+    3.5. carrierwaveのビュー
+    [本文]
+        carrierwaveのビューを作成します。
+    [詳細]
+        app/views/users/_form.html.erb
+        app/views/users/edit.html.erb
+        app/views/users/index.html.erb
+        app/views/users/new.html.erb
+        app/views/users/show.html.erb
+
+    3.6. carrierwaveのコントローラー
+    [本文]
+        carrierwaveのコントローラーを作成します。
+    [詳細]
+        app/controllers/users_controller.rb
+
+    3.7. carrierwaveのテスト
+    [本文]
+        carrierwaveのテストを作成します。
+    [詳細]
+        spec/requests/users_spec.rb
+
+    3.8. まとめ
+    [本文]
+        このチュートリアルでは、carrierwaveを使って、画像アップロード機能を作りました。
+        このチュートリアルを終えると、carrierwaveを使って、画像アップロード機能を作るための基本的な知識が身につきます。
+
+4. RailsのGem「ransack」で検索機能を作ろう
+[本文]
+    4.1. ransackとは
+    [本文]
+        ransackは、検索機能を作るためのGemです。
+        このチュートリアルでは、ransackを使って、検索機能を作ります。
+
+    4.2. ransackのインストール
+    [本文]
+        ransackを使うために、まずはransackをインストールします。
+    [詳細]
+        Gemfileに、ransackを追加します。
+        $ bundle install
+
+    4.3. ransackの設定
+    [本文]
+        ransackを使うために、設定を行います。
+
+    4.4. ransackのビュー
+    [本文]
+        ransackのビューを作成します。
+    [詳細]
+        app/views/users/index.html.erb
+    
+    4.5. ransackのコントローラー
+    [本文]
+        ransackのコントローラーを作成します。
+    [詳細]
+        app/controllers/users_controller.rb
+    
+    4.6. ransackのテスト
+    [本文]
+        ransackのテストを作成します。
+    [詳細]
+        spec/requests/users_spec.rb
+    
+    4.7. まとめ
+    [本文]
+        このチュートリアルでは、ransackを使って、検索機能を作りました。
+        このチュートリアルを終えると、ransackを使って、検索機能を作るための基本的な知識が身につきます。
+
+5. RailsのGem「kaminari」でページネーション機能を作ろう
+[本文]
+    5.1. kaminariとは
+    [本文]
+        kaminariは、ページネーション機能を作るためのGemです。
+        このチュートリアルでは、kaminariを使って、ページネーション機能を作ります。
+
+    5.2. kaminariのインストール
+    [本文]
+        kaminariを使うために、まずはkaminariをインストールします。
+    [詳細]
+        Gemfileに、kaminariを追加します。
+        $ bundle install
+
+    5.3. kaminariの設定
+    [本文]
+        kaminariを使うために、設定を行います。
+    
+    5.4. kaminariのビュー
+    [本文]
+        kaminariのビューを作成します。
+    [詳細]
+        app/views/users/index.html.erb
+    
+    5.5. kaminariのコントローラー
+    [本文]
+        kaminariのコントローラーを作成します。
+    [詳細]
+        app/controllers/users_controller.rb
+    
+    5.6. kaminariのテスト
+    [本文]
+        kaminariのテストを作成します。
+    [詳細]
+        spec/requests/users_spec.rb
+    
+    5.7. まとめ
+    [本文]
+        このチュートリアルでは、kaminariを使って、ページネーション機能を作りました。
+        このチュートリアルを終えると、kaminariを使って、ページネーション機能を作るための基本的な知識が身につきます。
+
+6. RailsのGem「activeadmin」で管理画面を作ろう
+[本文]
+    6.1. activeadminとは
+    [本文]
+        activeadminは、管理画面を作るためのGemです。
+        このチュートリアルでは、activeadminを使って、管理画面を作ります。
+    [詳細]
+        このチュートリアルでは、管理画面を作るために、activeadminを使います。
+        しかし、activeadminは、Railsのバージョンが5.2.0以上でないと、動作しません。
+        そのため、Railsのバージョンを5.2.0にアップデートします。
+        $ rails _5.2.0_ new activeadmin_tutorial
+        $ cd activeadmin_tutorial
+        $ bundle install
+
+    6.2. activeadminのインストール
+    [本文]
+        activeadminを使うために、まずはactiveadminをインストールします。
+    [詳細]
+        Gemfileに、activeadminを追加します。
+        $ bundle install
+
+    6.3. activeadminの設定
+    [本文]
+        activeadminを使うために、設定を行います。
+    [詳細]
+        $ rails g active_admin:install
+        $ rails db:migrate
+
+    6.4. activeadminの使い方
+    [本文]
+        activeadminを使って、管理画面を作ります。
+    [詳細]
+        $ rails g active_admin:resource User
+        $ rails db:migrate
+        
+    6.5. まとめ
+    [本文]
+        このチュートリアルでは、activeadminを使って、管理画面を作りました。
+        このチュートリアルを終えると、activeadminを使って、管理画面を作るための基本的な知識が身につきます。
+
+7. RailsのGem「rails_admin」で管理画面を作ろう
+[本文]
+    7.1. rails_adminとは
+    [本文]
+        rails_adminは、管理画面を作るためのGemです。
+        このチュートリアルでは、rails_adminを使って、管理画面を作ります。
+    [詳細]
+        このチュートリアルでは、管理画面を作るために、rails_adminを使います。
+        しかし、rails_adminは、Railsのバージョンが5.2.0以上でないと、動作しません。
+        そのため、Railsのバージョンを5.2.0にアップデートします。
+        $ rails _5.2.0_ new rails_admin_tutorial
+        $ cd rails_admin_tutorial
+        $ bundle install
+
+    7.2. rails_adminのインストール
+    [本文]
+        rails_adminを使うために、まずはrails_adminをインストールします。
+    [詳細]
+        Gemfileに、rails_adminを追加します。
+        $ bundle install
+
+    7.3. rails_adminの設定
+    [本文]
+        rails_adminを使うために、設定を行います。
+    [詳細]
+        $ rails g rails_admin:install
+        $ rails db:migrate
+
+    7.4. rails_adminの使い方
+    [本文]
+        rails_adminを使って、管理画面を作ります。
+    [詳細]
+        $ rails g rails_admin:config User
+        $ rails db:migrate
+
+    7.5. まとめ
+    [本文]
+        このチュートリアルでは、rails_adminを使って、管理画面を作りました。
+        このチュートリアルを終えると、rails_adminを使って、管理画面を作るための基本的な知識が身につきます。
+    [詳細]
+        このチュートリアルでは、管理画面を作るために、rails_adminを使いました。
+        しかし、rails_adminは、Railsのバージョンが5.2.0以上でないと、動作しません。
+        そのため、Railsのバージョンを5.2.0にアップデートしました。
+        また、rails_adminは、Railsのバージョンが5.2.0以上でないと、動作しません。
+        そのため、Railsのバージョンを5.2.0にアップデートしました。
+
+8. RailsのGem「rails_best_practices」でコードをチェックしよう
+[本文]
+    8.1. rails_best_practicesとは
+    [本文]
+        rails_best_practicesは、RailsのコードをチェックするためのGemです。
+        このチュートリアルでは、rails_best_practicesを使って、Railsのコードをチェックします。
+    [詳細]
+        このチュートリアルでは、Railsのコードをチェックするために、rails_best_practicesを使います。
+        しかし、rails_best_practicesは、Railsのバージョンが5.2.0以上でないと、動作しません。
+        そのため、Railsのバージョンを5.2.0にアップデートします。
+        $ rails _5.2.0_ new rails_best_practices_tutorial
+        $ cd rails_best_practices_tutorial
+        $ bundle install
+    
+    8.2. rails_best_practicesのインストール
+    [本文]
+        rails_best_practicesを使うために、まずはrails_best_practicesをインストールします。
+    [詳細]
+        Gemfileに、rails_best_practicesを追加します。
+        $ bundle install
+    
+    8.3. rails_best_practicesの設定
+    [本文]
+        rails_best_practicesを使うために、設定を行います。
+    [詳細]
+        $ rails g rails_best_practices:install
+        $ rails db:migrate
+
+    8.4. rails_best_practicesの使い方
+    [本文]
+        rails_best_practicesを使って、Railsのコードをチェックします。
+    [詳細]
+        $ rails_best_practices
+    
+    8.5. まとめ
+    [本文]
+        このチュートリアルでは、rails_best_practicesを使って、Railsのコードをチェックしました。
+        このチュートリアルを終えると、rails_best_practicesを使って、Railsのコードをチェックするための基本的な知識が身につきます。
+    [詳細]
+        このチュートリアルでは、Railsのコードをチェックするために、rails_best_practicesを使いました。
+        しかし、rails_best_practicesは、Railsのバージョンが5.2.0以上でないと、動作しません。
+        そのため、Railsのバージョンを5.2.0にアップデートしました。
+
+9. RailsのGem「rubocop」でコードをチェックしよう
+[本文]
+    9.1. rubocopとは
+    [本文]
+        rubocopは、RubyのコードをチェックするためのGemです。
+        このチュートリアルでは、rubocopを使って、Rubyのコードをチェックします。
+    [詳細]
+        このチュートリアルでは、Rubyのコードをチェックするために、rubocopを使います。
+        しかし、rubocopは、Railsのバージョンが5.2.0以上でないと、動作しません。
+        そのため、Railsのバージョンを5.2.0にアップデートします。
+        $ rails _5.2.0_ new rubocop_tutorial
+        $ cd rubocop_tutorial
+        $ bundle install
+    
+    9.2. rubocopのインストール
+    [本文]
+        rubocopを使うために、まずはrubocopをインストールします。
+    [詳細]
+        Gemfileに、rubocopを追加します。
+        $ bundle install
+    
+    9.3. rubocopの設定
+    [本文]
+        rubocopを使うために、設定を行います。
+    [詳細]
+        $ rails g rubocop:install
+        $ rails db:migrate
+
+    9.4. rubocopの使い方
+    [本文]
+        rubocopを使って、Rubyのコードをチェックします。
+    [詳細]
+        $ rubocop
+    
+    9.5. まとめ
+    [本文]
+        このチュートリアルでは、rubocopを使って、Rubyのコードをチェックしました。
+        このチュートリアルを終えると、rubocopを使って、Rubyのコードをチェックするための基本的な知識が身につきます。
+    [詳細]
+        このチュートリアルでは、Rubyのコードをチェックするために、rubocopを使いました。
+        しかし、rubocopは、Railsのバージョンが5.2.0以上でないと、動作しません。
+        そのため、Railsのバージョンを5.2.0にアップデートしました。
+
+10. RailsのGem「brakeman」でセキュリティをチェックしよう
+[本文]
+    10.1. brakemanとは
+    [本文]
+        brakemanは、RailsのコードをチェックするためのGemです。
+        このチュートリアルでは、brakemanを使って、Railsのコードをチェックします。
+    [詳細]
+        このチュートリアルでは、Railsのコードをチェックするために、brakemanを使います。
+        しかし、brakemanは、Railsのバージョンが5.2.0以上でないと、動作しません。
+        そのため、Railsのバージョンを5.2.0にアップデートします。
+        $ rails _5.2.0_ new brakeman_tutorial
+        $ cd brakeman_tutorial
+        $ bundle install
+    
+    10.2. brakemanのインストール
+    [本文]
+        brakemanを使うために、まずはbrakemanをインストールします。
+    [詳細]
+        Gemfileに、brakemanを追加します。
+        $ bundle install
+    
+    10.3. brakemanの設定
+    [本文]
+        brakemanを使うために、設定を行います。
+    [詳細]
+        $ rails db:migrate
+
+    10.4. brakemanの使い方
+    [本文]
+        brakemanを使って、Railsのコードをチェックします。
+    [詳細]
+        $ brakeman
+    
+    10.5. まとめ
+    [本文]
+        このチュートリアルでは、brakemanを使って、Railsのコードをチェックしました。
+        このチュートリアルを終えると、brakemanを使って、Railsのコードをチェックするための基本的な知識が身につきます。
+    [詳細]
+        このチュートリアルでは、Railsのコードをチェックするために、brakemanを使いました。
+        しかし、brakemanは、Railsのバージョンが5.2.0以上でないと、動作しません。
+        そのため、Railsのバージョンを5.2.0にアップデートしました。
+
+11. RailsのGem「bundler-audit」でセキュリティをチェックしよう
+[本文]
+    11.1. bundler-auditとは
+    [本文]
+        bundler-auditは、GemのセキュリティをチェックするためのGemです。
+        このチュートリアルでは、bundler-auditを使って、Gemのセキュリティをチェックします。
+    [詳細]
+        このチュートリアルでは、Gemのセキュリティをチェックするために、bundler-auditを使います。
+        しかし、bundler-auditは、Railsのバージョンが5.2.0以上でないと、動作しません。
+        そのため、Railsのバージョンを5.2.0にアップデートします。
+        $ rails _5.2.0_ new bundler_audit_tutorial
+        $ cd bundler_audit_tutorial
+        $ bundle install
+    
+    11.2. bundler-auditのインストール
+    [本文]
+        bundler-auditを使うために、まずはbundler-auditをインストールします。
+    [詳細]
+        Gemfileに、bundler-auditを追加します。
+        $ bundle install
+    
+    11.3. bundler-auditの設定
+    [本文]
+        bundler-auditを使うために、設定を行います。
+    [詳細]
+        $ rails db:migrate
+    
+    11.4. bundler-auditの使い方
+    [本文]
+        bundler-auditを使って、Gemのセキュリティをチェックします。
+    [詳細]
+        $ bundle audit
+    
+    11.5. まとめ
+    [本文]
+        このチュートリアルでは、bundler-auditを使って、Gemのセキュリティをチェックしました。
+        このチュートリアルを終えると、bundler-auditを使って、Gemのセキュリティをチェックするための基本的な知識が身につきます。
+    [詳細]
+        このチュートリアルでは、Gemのセキュリティをチェックするために、bundler-auditを使いました。
+        しかし、bundler-auditは、Railsのバージョンが5.2.0以上でないと、動作しません。
+        そのため、Railsのバージョンを5.2.0にアップデートしました。
+    
+12.1 RailsのGem「rack-ssl-enforcer」でSSLを設定しよう
+    12.1. rack-ssl-enforcerとは
+    [本文]
+        rack-ssl-enforcerは、SSLを設定するためのGemです。
+        このチュートリアルでは、rack-ssl-enforcerを使って、SSLを設定します。
+    [詳細]
+        このチュートリアルでは、SSLを設定するために、rack-ssl-enforcerを使います。
+        しかし、rack-ssl-enforcerは、Railsのバージョンが5.2.0以上でないと、動作しません。
+        そのため、Railsのバージョンを5.2.0にアップデートします。
+        $ rails _5.2.0_ new rack_ssl_enforcer_tutorial
+        $ cd rack_ssl_enforcer_tutorial
+        $ bundle install
+    
+    12.2. rack-ssl-enforcerのインストール
+    [本文]
+        rack-ssl-enforcerを使うために、まずはrack-ssl-enforcerをインストールします。
+    [詳細]
+        Gemfileに、rack-ssl-enforcerを追加します。
+        $ bundle install
+    
+    12.3. rack-ssl-enforcerの設定
+    [本文]
+        rack-ssl-enforcerを使うために、設定を行います。
+    [詳細]
+        $ rails db:migrate
+    
+    12.4. rack-ssl-enforcerの使い方
+    [本文]
+        rack-ssl-enforcerを使って、SSLを設定します。
+    [詳細]
+        $ bundle exec rails s
+    
+    12.5. まとめ
+    [本文]
+        このチュートリアルでは、rack-ssl-enforcerを使って、SSLを設定しました。
+        このチュートリアルを終えると、rack-ssl-enforcerを使って、SSLを設定するための基本的な知識が身につきます。
+    [詳細]
+        このチュートリアルでは、SSLを設定するために、rack-ssl-enforcerを使いました。
+        しかし、rack-ssl-enforcerは、Railsのバージョンが5.2.0以上でないと、動作しません。
+        そのため、Railsのバージョンを5.2.0にアップデートしました。
+    
+12. RailsのGem「rack-rewrite」でURLを設定しよう
+    12.1.
+    [本文]
+        rack-rewriteは、URLを設定するためのGemです。
+        このチュートリアルでは、rack-rewriteを使って、URLを設定します。
+    [詳細]
+        このチュートリアルでは、URLを設定するために、rack-rewriteを使います。
+        しかし、rack-rewriteは、Railsのバージョンが5.2.0以上でないと、動作しません。
+        そのため、Railsのバージョンを5.2.0にアップデートします。
+        $ rails _5.2.0_ new rack_rewrite_tutorial
+        $ cd rack_rewrite_tutorial
+        $ bundle install
+        
+    12.2. rack-rewriteのインストール
+    [本文]
+        rack-rewriteを使うために、まずはrack-rewriteをインストールします。
+    [詳細]
+        Gemfileに、rack-rewriteを追加します。
+        $ bundle install
+    
+    12.3. rack-rewriteの設定
+    [本文]
+        rack-rewriteを使うために、設定を行います。
+    [詳細]
+        $ rails db:migrate
+    
+    12.4. rack-rewriteの使い方
+    [本文]
+        rack-rewriteを使って、URLを設定します。
+    [詳細]
+        $ bundle exec rails s
+    
+    12.5. まとめ
+    [本文]
+        このチュートリアルでは、rack-rewriteを使って、URLを設定しました。
+        このチュートリアルを終えると、rack-rewriteを使って、URLを設定するための基本的な知識が身につきます。
+    [詳細]
+        このチュートリアルでは、URLを設定するために、rack-rewriteを使いました。
+        しかし、rack-rewriteは、Railsのバージョンが5.2.0以上でないと、動作しません。
+        そのため、Railsのバージョンを5.2.0にアップデートしました。
+
+13. RailsのGem「rack-attack」でアクセス制限を設定しよう
+    13.1.
+    [本文]
+        rack-attackは、アクセス制限を設定するためのGemです。
+        このチュートリアルでは、rack-attackを使って、アクセス制限を設定します。
+    [詳細]
+        このチュートリアルでは、アクセス制限を設定するために、rack-attackを使います。
+        しかし、rack-attackは、Railsのバージョンが5.2.0以上でないと、動作しません。
+        そのため、Railsのバージョンを5.2.0にアップデートします。
+        $ rails _5.2.0_ new rack_attack_tutorial
+        $ cd rack_attack_tutorial
+        $ bundle install
+    
+    13.2. rack-attackのインストール
+    [本文]
+        rack-attackを使うために、まずはrack-attackをインストールします。
+    [詳細]
+        Gemfileに、rack-attackを追加します。
+        $ bundle install
+    
+    13.3. rack-attackの設定
+    [本文]
+        rack-attackを使うために、設定を行います。
+    [詳細]
+        $ rails db:migrate
+    
+    13.4. rack-attackの使い方
+    [本文]
+        rack-attackを使って、アクセス制限を設定します。
+    [詳細]
+        $ bundle exec rails s
+    
+    13.5. まとめ
+    [本文]
+        このチュートリアルでは、rack-attackを使って、アクセス制限を設定しました。
+        このチュートリアルを終えると、rack-attackを使って、アクセス制限を設定するための基本的な知識が身につきます。
+    [詳細]
+        このチュートリアルでは、アクセス制限を設定するために、rack-attackを使いました。
+        しかし、rack-attackは、Railsのバージョンが5.2.0以上でないと、動作しません。
+        そのため、Railsのバージョンを5.2.0にアップデートしました。
+
+Railsのテスト
+[本文]
+    Railsのテストについて学びます。
+[詳細]
+    Railsのテストについて学びます。
+
+14. Railsのテスト「RSpec」でテストを書こう
+[本文]
+    RSpecは、Railsのテストを書くためのGemです。
+    このチュートリアルでは、RSpecを使って、テストを書きます。
+[詳細]
+    このチュートリアルでは、テストを書くために、RSpecを使います。
+    しかし、RSpecは、Railsのバージョンが5.2.0以上でないと、動作しません。
+    そのため、Railsのバージョンを5.2.0にアップデートします。
+    $ rails _5.2.0_ new rspec_tutorial
+    $ cd rspec_tutorial
+    $ bundle install
+    14.1. RSpecのインストール
+    [本文]
+        RSpecを使うために、まずはRSpecをインストールします。
+    [詳細]
+        Gemfileに、RSpecを追加します。
+        $ bundle install
+
+15. Railsのテスト「Capybara」でテストを書こう
+[本文]
+    Capybaraは、Railsのテストを書くためのGemです。
+    このチュートリアルでは、Capybaraを使って、テストを書きます。
+[詳細]
+    このチュートリアルでは、テストを書くために、Capybaraを使います。
+    しかし、Capybaraは、Railsのバージョンが5.2.0以上でないと、動作しません。
+    そのため、Railsのバージョンを5.2.0にアップデートします。
+    $ rails _5.2.0_ new capybara_tutorial
+    $ cd capybara_tutorial
+    $ bundle install
+    15.1. Capybaraのインストール
+    [本文]
+        Capybaraを使うために、まずはCapybaraをインストールします。
+    [詳細]
+        Gemfileに、Capybaraを追加します。
+        $ bundle install
+    
+    15.2. Capybaraの設定
+    [本文]
+        Capybaraを使うために、設定を行います。
+    [詳細]
+        $ rails db:migrate
+
+16. Railsのテスト「FactoryBot」でテストを書こう
+[本文]
+    FactoryBotは、Railsのテストを書くためのGemです。
+    このチュートリアルでは、FactoryBotを使って、テストを書きます。
+[詳細]
+    このチュートリアルでは、テストを書くために、FactoryBotを使います。
+    しかし、FactoryBotは、Railsのバージョンが5.2.0以上でないと、動作しません。
+    そのため、Railsのバージョンを5.2.0にアップデートします。
+    $ rails _5.2.0_ new factory_bot_tutorial
+    $ cd factory_bot_tutorial
+    $ bundle install
+    16.1. FactoryBotのインストール
+    [本文]
+        FactoryBotを使うために、まずはFactoryBotをインストールします。
+    [詳細]
+        Gemfileに、FactoryBotを追加します。
+        $ bundle install
+    
+    16.2. FactoryBotの設定
+    [本文]
+        FactoryBotを使うために、設定を行います。
+    [詳細]
+        $ rails db:migrate
+    
+    16.3. FactoryBotの使い方
+    [本文]
+        FactoryBotを使って、テストデータを作成します。
+    [詳細]
+        $ rails db:migrate
+    
+    16.4. FactoryBotの使い方
+    [本文]
+        FactoryBotを使って、テストデータを作成します。
+    [詳細]
+        $ rails db:migrate
+    
+17. Railsのテスト「Faker」でテストを書こう
+[本文]
+    Fakerは、Railsのテストを書くためのGemです。
+    このチュートリアルでは、Fakerを使って、テストを書きます。
+[詳細]
+    このチュートリアルでは、テストを書くために、Fakerを使います。
+    しかし、Fakerは、Railsのバージョンが5.2.0以上でないと、動作しません。
+    そのため、Railsのバージョンを5.2.0にアップデートします。
+    $ rails _5.2.0_ new faker_tutorial
+    $ cd faker_tutorial
+    $ bundle install
+    17.1. Fakerのインストール
+    [本文]
+        Fakerを使うために、まずはFakerをインストールします。
+    [詳細]
+        Gemfileに、Fakerを追加します。
+        $ bundle install
+    
+    17.2. Fakerの使い方
+    [本文]
+        Fakerを使って、テストデータを作成します。
+    [詳細]
+        $ rails db:migrate
+    
+18. Railsのテスト「DatabaseCleaner」でテストを書こう
+[本文]
+    DatabaseCleanerは、Railsのテストを書くためのGemです。
+    このチュートリアルでは、DatabaseCleanerを使って、テストを書きます。
+[詳細]
+    このチュートリアルでは、テストを書くために、DatabaseCleanerを使います。
+    しかし、DatabaseCleanerは、Railsのバージョンが5.2.0以上でないと、動作しません。
+    そのため、Railsのバージョンを5.2.0にアップデートします。
+    $ rails _5.2.0_ new database_cleaner_tutorial
+    $ cd database_cleaner_tutorial
+    $ bundle install
+    18.1. DatabaseCleanerのインストール
+    [本文]
+        DatabaseCleanerを使うために、まずはDatabaseCleanerをインストールします。
+    [詳細]
+        Gemfileに、DatabaseCleanerを追加します。
+        $ bundle install
+    
+    18.2. DatabaseCleanerの設定
+    [本文]
+        DatabaseCleanerを使うために、設定を行います。
+    [詳細]
+        $ rails db:migrate
+    
+    18.3. DatabaseCleanerの使い方
+    [本文]
+        DatabaseCleanerを使って、テストデータを作成します。
+    [詳細]
+        $ rails db:migrate
+    
+19. Railsのテスト「Cucumber」でテストを書こう
+[本文]
+    Cucumberは、Railsのテストを書くためのGemです。
+    このチュートリアルでは、Cucumberを使って、テストを書きます。
+[詳細]
+    このチュートリアルでは、テストを書くために、Cucumberを使います。
+    しかし、Cucumberは、Railsのバージョンが5.2.0以上でないと、動作しません。
+    そのため、Railsのバージョンを5.2.0にアップデートします。
+    $ rails _5.2.0_ new cucumber_tutorial
+    $ cd cucumber_tutorial
+    $ bundle install
+    19.1. Cucumberのインストール
+    [本文]
+        Cucumberを使うために、まずはCucumberをインストールします。
+    [詳細]
+        Gemfileに、Cucumberを追加します。
+        $ bundle install
+    
+    19.2. Cucumberの設定
+    [本文]
+        Cucumberを使うために、設定を行います。
+    [詳細]
+        $ rails db:migrate
+    
+    19.3. Cucumberの使い方
+    [本文]
+        Cucumberを使って、テストデータを作成します。
+    [詳細]
+        $ rails db:migrate
+    19.4. Cucumberでテストコードを書く
+    参照: https://sakanasoft.net/gherkin-is-valuable-test-practice/
+    
+20. JenkinsでRailsのテスト・デプロイを自動化しよう
+[本文]
+    Jenkinsは、Railsのテストやデプロイを自動化するためのツールです。
+    このチュートリアルでは、Jenkinsを使って、Railsのテストやデプロイを自動化します。
+
+■ライセンス
+MIT License (MIT) に準拠しています。
+
+■著者
+Takahashi Akari
+https://github.com/akari-takahashi/
+</pre>
+</body>
+</html>
